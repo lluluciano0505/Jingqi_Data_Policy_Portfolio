@@ -8,34 +8,28 @@ website:
     left:
       - href: index.qmd
         text: Home
-      - text: Weekly Notes
-        menu:
-          - href: weekly-notes/week-01-notes.qmd
-            text: Week 1
-          - href: weekly-notes/week-02-notes.qmd
-            text: Week 2
-      - text: Labs
-        menu:
-          - href: Labs/lab_0/lab0_template.qmd
-            text: Lab 0
-      - text: Assignments
+      - text: Public Policy Analytics
         menu:
           - href: assignments/assignment_1/assignment1_template.qmd
-            text: "Assignment 1: Census Data Exploration"
+            text: "Census Data Quality for Policy Decisions"
           - href: assignments/assignment_2/Luciano_Lu_assignment2.qmd
-            text: "Assignment 2: Data Visualization with ggplots"
+            text: "Spatial Analysis and Visualization - Healthcare Access and Equity in Pennsylvania"
           - href: assignments/midterm/appendix_nolog.qmd
-            text: "Midterm Project"
+            text: "Philadelphia Housing Price Prediction Model"
+          - href: assignments/assignment_4/Luciano_Lu_assignment4.qmd
+            text: "Spatial Predictive Modeling – Sanitation 311 Requests"
+          - href: assignments/assignment_5/hw_5.qmd
+            text: "Space-Time Prediction of Bike Share Demand: Philadelphia Indego"
+          - href: assignments/Final/FINAL_1.qmd
+            text: "Fire Alarms Analysis"
+      - text: PPT
+        menu:
           - href: assignments/midterm/Presentation_slides.qmd
             text: "Midterm PPT"
-          - href: assignments/assignment_4/Luciano_Lu_assignment4.qmd
-            text: "Assignment4"
-          - href: assignments/assignment_5/hw_5.qmd
-            text: "Assignment5"
-          - href: assignments/Final/FINAL_1.qmd
-            text: "Final Project: Fire Alarms Analysis"
           - href: assignments/Final/presentation/Final_Presentation.qmd
             text: "Final PPT"
+          
+            
 format:
   html:
     theme: cosmo
