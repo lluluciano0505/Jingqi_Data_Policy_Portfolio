@@ -1,22 +1,69 @@
-[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/SmazhzpM)
-# MUSA 5080 Student Portfolio Template
+# MUSA 5080 Data Policy Portfolio
 
-This template helps you create a professional portfolio for Public Policy Analytics coursework.
+This repository contains Luciano Lu's portfolio for MUSA 5080 (Public Policy Analytics), built and published as a Quarto static website.
 
-## Quick Setup
-1. **Personalize:** Edit `_quarto.yml` to include your name
-2. **About:** Update `index.qmd` with your information
-3. **Build:** Run `quarto render` to generate your website
-4. **Deploy:** Enable GitHub Pages in Settings → Pages
+## Project Overview
 
-## Portfolio Structure
-- `index.qmd` - Homepage
-- `weekly-notes/` - Learning reflections for each week
-- `labs/` - Assignment analyses (you'll add this)
+This portfolio showcases coursework analyses and project deliverables, including:
 
-## Weekly Notes
-Create a new file `weekly-notes/week-XX-notes.qmd` for each week.
+- Assignment 1: Census Data Quality for Policy Decisions
+- Assignment 2: Healthcare Access and Equity in Pennsylvania
+- Midterm: Philadelphia Housing Price Prediction Model
+- Assignment 4: Spatial Predictive Modeling of Sanitation 311 Requests
+- Assignment 5: Space-Time Prediction of Bike Share Demand (Indego)
+- Final: Fire Alarms Analysis
+- Midterm and Final Presentation Slides
 
-### Example Portfolio
-See what you're building toward: **[Dr. Delmelle's Sample Portfolio](https://ecdelmelle.github.io/MUSA-5080-instructor-portolio/)**
+Site entry points and navigation are defined in [_quarto.yml](_quarto.yml) and [index.qmd](index.qmd).
+
+## Repository Structure
+
+- [index.qmd](index.qmd): Homepage
+- [_quarto.yml](_quarto.yml): Quarto site configuration (navbar, theme, output directory)
+- [assignments/](assignments): Assignment, midterm, and final project pages
+- [weekly-notes/](weekly-notes): Weekly reflection notes
+- [Labs/](Labs): Lab materials
+- [docs/](docs): Rendered static site for GitHub Pages
+
+## Local Development
+
+### 1. Prerequisites
+
+- Install [Quarto](https://quarto.org/docs/get-started/)
+- Install [R](https://cran.r-project.org/) (this project is primarily R/Quarto-based)
+- Optional for VS Code language support: install the R package `languageserver`
+
+### 2. Preview the site
+
+From the repository root:
+
+```bash
+quarto preview
+```
+
+### 3. Render the site
+
+```bash
+quarto render
+```
+
+Rendered output is written to [docs/](docs), as configured by `output-dir: docs` in [_quarto.yml](_quarto.yml).
+
+## GitHub Pages Deployment
+
+1. Push the latest changes to GitHub.
+2. In repository Settings -> Pages, set:
+	- Branch: `main`
+	- Folder: `/docs`
+3. Save and wait for the site to publish.
+
+## Common Maintenance Tasks
+
+- Add a weekly note: create `week-XX-notes.qmd` in [weekly-notes/](weekly-notes)
+- Add an assignment page: add a `.qmd` file under [assignments/](assignments), then update `navbar` in [_quarto.yml](_quarto.yml)
+- Change site theme: edit `format.html.theme` in [_quarto.yml](_quarto.yml)
+
+## Notes
+
+This repository is for coursework and portfolio presentation. Please cite data sources and external materials in the corresponding assignment files.
 
