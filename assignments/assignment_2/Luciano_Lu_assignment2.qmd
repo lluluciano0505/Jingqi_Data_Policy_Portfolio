@@ -1,23 +1,50 @@
+  labs(
+    title = "Distance to Nearest Hospital (Vulnerable Tracts)",
+    x = "Distance (miles)",
+    y = "Density",
+    caption = "Most vulnerable tracts are located within 5 miles of the nearest hospital, though a small number of rural tracts face much longer travel distances (up to ~18 miles)."
+  ) +
+  theme_minimal(base_size = 11)
+
+
+```
+
 ---
-title: "Assignment 2: Spatial Analysis and Visualization"
-subtitle: "Healthcare Access and Equity in Pennsylvania"
-author: "Your Name Here"
-date: today
-format: 
-  html:
-    code-fold: false
-    toc: true
-    toc-location: left
-    theme: cosmo
-    embed-resources: true
-execute:
-  warning: false
-  message: false
+
+## So What / Policy Implications
+This analysis identifies specific tracts and counties where elderly, low-income residents face significantly longer travel times to the nearest hospital. Practical actions decision-makers can take:
+
+- Short term (operations): deploy mobile clinics or telehealth outreach to the small number of high-priority tracts identified in the ranking table; coordinate ride-share or non-emergency medical transport for residents in tracts >15 miles from a hospital.
+- Medium term (investment): prioritize facility siting, grant funding, or satellite clinic incentives in counties with high percent-underserved and nontrivial vulnerable populations (e.g., Cameron, Forest, Clearfield).
+- Policy & evaluation: use the provided county priority table and maps as inputs for grant applications, and track changes over time by repeating this analysis annually to evaluate whether interventions reduce average travel times.
+
+## Critical Reflection — Findings and Next Steps
+发现了什么问题:
+
+- 数据限制：ACS 5-year estimates introduce sampling variability (MOEs) in small rural tracts; hospital dataset lacks provider capacity (beds/ED throughput) so distance is a proxy, not a direct measure of service availability.
+- 方法限制：使用区 centroid 到最近医院的直线/投影距离忽略了道路网络、交通时段和跨界就诊行为，会低估实际出行时间差异。
+
+如果有更多时间/数据我会怎么做:
+
+- 集成医院运力或就诊量数据（如 CMS/州级住院记录或门诊量）以衡量实际可用服务，而不是仅用地理距离。
+- 用道路网络行程时间（考虑高峰/离峰）替代直线距离，并加入事件/天气日历以建模短期可达性波动。
+- 扩展为多期分析或使用移动医疗与交通补贴的成本-效益模拟，把可达性改善量化为政策回报率，帮助优先分配有限资金。
+
+---
+
+## Part 3: Own Data Analysis 
 ---
 
 ---
 
 ## Part 1: Healthcare Access for Vulnerable Populations
+
+### Introduction — Problem and Audience
+This analysis is written for state and county public health officials, hospital network planners, and nonprofit organizations making resource-allocation decisions. The central question is: which communities face the largest barriers to timely hospital access, and where should limited funding or mobile services be prioritized to reduce travel time for vulnerable residents? The following analysis quantifies geographic differences in hospital accessibility for elderly and low-income populations and produces county- and tract-level outputs (maps and ranked lists) that decision-makers can use to target investments.
+
+### Analysis approach (brief)
+I use ACS demographic estimates merged with spatial hospital locations to identify "vulnerable" census tracts (low income + high elderly share), compute centroid-based travel distances to the nearest hospital, and aggregate results to county level to produce a ranked priority list and maps for policy use.
+
 **Your Task:**
 ```{r}
 # Load required packages

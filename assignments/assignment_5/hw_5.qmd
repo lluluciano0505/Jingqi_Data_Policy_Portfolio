@@ -109,7 +109,9 @@ glimpse(indego)
 
 # 1. Introduction
 
-This report analyzes hourly bike share demand in Philadelphia using Indego data from Q2 2024. The goal is to build and evaluate space-time predictive models, diagnose where and why errors occur, and propose new features that improve forecasting performance for operational planning.
+Audience and problem statement:
+
+This analysis targets Indego operations managers, city mobility planners, and real-estate or consulting teams evaluating micro-mobility investments. The practical question is: where and when will bike availability gaps occur, and how should operations prioritize rebalancing, station capacity, and short-term staffing to reduce unmet demand and improve service reliability? The report builds space–time predictive models of hourly station demand and translates model outputs into actionable priorities (high-risk station-hours, candidate sites for capacity changes, and monitoring metrics) for non-technical decision-makers.
 
 ------------------------------------------------------------------------
 
@@ -1295,6 +1297,24 @@ Spatially, errors are highest at busy stations in Center City and University Cit
 
 To improve Model 2, I add three features: a perfect-weather indicator, a same-hour-last-week lag, and a rolling 7-day average of demand. However, the enhanced model’s MAE rises slightly to **0.73**, and a Poisson count model with the same features also achieves about **0.73**. These results suggest that the short-run lag structure already captures most usable signal, and the additional temporal trend features mainly add noise in this three-month sample.
 
-## Critical Reflection
+## So What / Policy Implications
 
-An MAE of roughly **0.7 trips per station-hour** is operationally useful for high-level planning and rebalancing strategy, but not sufficient for fully automated real-time control, especially during volatile PM peaks in the downtown core. Errors do not appear to systematically disadvantage low-income or high-transit neighborhoods, but any deployment should monitor error patterns by area and enforce minimum service standards in equity-priority communities. The current model ignores events, disruptions, and spatial spillovers; with more time and data, I would incorporate event calendars, network structure, and more flexible model families to better capture the complex dynamics of Philadelphia’s bike share system.
+The modeling results provide concrete operational guidance:
+
+- Operations: use the station-hour risk rankings to prioritize rebalancing trips and staff allocation during identified high-error PM peaks; focus manual interventions on Center City and University City during peak windows to reduce shortages and lost trips.
+- Planning & partnerships: use the demand maps to inform where incremental station capacity or dockless supplements will generate the largest marginal reduction in unmet demand; consider short-term promotional campaigns in underutilized hours to smooth peaks.
+- Equity & monitoring: implement area-level monitoring of forecast errors and service outages to ensure that equity-priority neighborhoods maintain minimum service levels; feed the model outputs into routine performance dashboards used by operators and city staff.
+
+## Critical Reflection — Findings and Next Steps
+
+发现了什么问题:
+
+- Key missing signals: the model does not account for large scheduled events, sudden service disruptions, or special transit patterns around universities—factors that drive the largest residuals.
+- Data limitations: the three-month sample limits seasonal generalizability; absence of operator GPS/redistribution logs and station capacity constraints reduces the model’s ability to link predictions to operational cost.
+
+如果有更多时间/数据我会怎么做:
+
+- Add event and calendar feeds (sports, university schedules, parades) and link them as predictors to better capture extreme peaks.
+- Incorporate operator telemetry (vehicle GPS and rebalancing logs) and station capacity to estimate the operational cost of forecast errors and run cost-benefit simulations for alternative rebalancing schedules.
+- Explore hierarchical time-series or bayesian spatio-temporal models and negative-binomial/zero-inflated count models to better handle overdispersion and station-level heterogeneity; run longer multi-year training to improve robustness.
+
