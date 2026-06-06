@@ -1,2 +1,6 @@
+# Quarto build/cache directories
 /.quarto/
+/_freeze/
+**/*_cache/
+/docs/application_package/
 **/*.quarto_ipynb
